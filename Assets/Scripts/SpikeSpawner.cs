@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpikeSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab;
+
     float lengthZ;
     float widthX;
     public int numberOfSegments; //Amount of segments to divide level into
@@ -15,7 +14,7 @@ public class SpikeSpawner : MonoBehaviour
     void Start()
     {
         SpawnObstacles();
-        
+
     }
 
     void SpawnObstacles()
@@ -29,20 +28,20 @@ public class SpikeSpawner : MonoBehaviour
         {
             for (int j = 0; j < obstaclesPerSegment; j++)
             {
-                
+
                 float segmentStartZ = i * segmentLength;
 
-                
+
                 float randomZ = Random.Range(segmentStartZ, segmentStartZ + segmentLength);
                 float randomX = Random.Range(-widthX / 2, widthX / 2);
                 float randomY = Random.Range(0, 2f);
 
-                
-                
+
+
                 if (transform.position.y > 4)
                 {
                     xRotation = -90;
-                    
+
                 }
                 else
                 {
