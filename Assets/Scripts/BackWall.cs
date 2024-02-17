@@ -36,16 +36,17 @@ public class BackWall : MonoBehaviour
     {
         currentLevel++;
 
-        if (currentLevel % 2 == 0)
+        if (currentLevel % 3 == 0)
         {
-            spawnerCeiling.numberOfSegments += 2;
-            spawnerGround.numberOfSegments += 2;
+           
+            spawnerCeiling.obstaclesPerSegment += 1;
+            spawnerGround.obstaclesPerSegment += 1;
         }
 
         else
         {
-            spawnerCeiling.obstaclesPerSegment += 1;
-            spawnerGround.obstaclesPerSegment += 1;
+            spawnerCeiling.numberOfSegments += 1;
+            spawnerGround.numberOfSegments += 1;
         }
 
         player.transform.position = playerStartPosition;

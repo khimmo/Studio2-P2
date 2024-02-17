@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 8318184945715761182, guid: 7965e3f94c0bbae4ab51bfd5c081177b, type: 3}
   numberOfSegments: 20
-  obstaclesPerSegment: 4
+  obstaclesPerSegment: 2
   ground: {fileID: 234093999}
 --- !u!65 &234094002
 BoxCollider:
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 8318184945715761182, guid: 7965e3f94c0bbae4ab51bfd5c081177b, type: 3}
   numberOfSegments: 20
-  obstaclesPerSegment: 4
+  obstaclesPerSegment: 2
   ground: {fileID: 342338781}
 --- !u!65 &342338784
 BoxCollider:
@@ -3690,8 +3690,9 @@ GameObject:
   - component: {fileID: 1308201298}
   - component: {fileID: 1308201297}
   - component: {fileID: 1308201296}
+  - component: {fileID: 1308201299}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3783,6 +3784,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308201294}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1308201299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308201294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5389aa50c29121e49ae64e3444863179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2035402140}
+  ground: {fileID: 234093999}
+  ceiling: {fileID: 342338781}
+  currentLevel: 0
 --- !u!1 &1355063734
 GameObject:
   m_ObjectHideFlags: 0
