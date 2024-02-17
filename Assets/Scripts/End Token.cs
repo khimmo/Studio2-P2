@@ -12,7 +12,7 @@ public class EndToken : MonoBehaviour
         ShootProjectile,
         GhostAbility,
         ExtraLife,
-        IncreaseMaxHealth
+        SlowMotion
     }
     public List<PowerUp> GetRandomPowerUps(int numChoices)
     {
@@ -22,7 +22,7 @@ public class EndToken : MonoBehaviour
             PowerUp.ShootProjectile,
             PowerUp.GhostAbility,
             PowerUp.ExtraLife,
-            PowerUp.IncreaseMaxHealth
+            PowerUp.SlowMotion
         };
 
         // Shuffle the list
@@ -37,6 +37,9 @@ public class EndToken : MonoBehaviour
 
         
         return allChoices.GetRange(0, numChoices);
+
+        //Needs UI logic to display the 3 random choices to the player and allow them to choose one
+        //Logic for player selection is in the ApplyPowerup() method
     }
 
     public void ApplyPowerUp(PowerUp selectedPowerUp)
@@ -56,10 +59,10 @@ public class EndToken : MonoBehaviour
                 // Grant ghosting ability for 2 seconds
                 break;
             case PowerUp.ExtraLife:
-                // Respawn the player back at the starting position
+                // Respawn the player back at the starting position without losing health
                 break;
-            case PowerUp.IncreaseMaxHealth:
-                // Give the player extra health
+            case PowerUp.SlowMotion:
+                // Give the player the ability to slow down time for 5s
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
