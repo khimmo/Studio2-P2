@@ -8,6 +8,7 @@ public class AbilityRandomizer : MonoBehaviour
     public GameObject player;
 
     PlayerPowerups powerups;
+    PlayerMovement movement;
 
     private int p, p0, p1, p2;
 
@@ -17,6 +18,8 @@ public class AbilityRandomizer : MonoBehaviour
     {
         powerups = player.GetComponent<PlayerPowerups>();
         canUpgrade = false;
+        movement = player.GetComponent<PlayerMovement>();
+        
     }
 
 
@@ -71,6 +74,7 @@ public class AbilityRandomizer : MonoBehaviour
 
             canUpgrade = false;
             gameObject.SetActive(false);
+            movement.enabled = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && canUpgrade == true)
@@ -102,6 +106,7 @@ public class AbilityRandomizer : MonoBehaviour
 
             canUpgrade = false;
             gameObject.SetActive(false);
+            movement.enabled = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && canUpgrade == true)
@@ -133,11 +138,13 @@ public class AbilityRandomizer : MonoBehaviour
 
             canUpgrade = false;
             gameObject.SetActive(false);
+            movement.enabled = true;
         }
     }
 
     public List<PowerUp> GetRandomPowerUps(int numChoices)
     {
+        
         List<PowerUp> allChoices = new List<PowerUp>
         {
             PowerUp.ReduceSize,
@@ -148,6 +155,7 @@ public class AbilityRandomizer : MonoBehaviour
         };
 
         gameObject.SetActive(true);
+        movement.enabled = false;
 
         // Shuffle the list
         int n = allChoices.Count;
