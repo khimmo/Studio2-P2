@@ -17,8 +17,10 @@ public class AbilityRandomizer : MonoBehaviour
     private void Start()
     {
         powerups = player.GetComponent<PlayerPowerups>();
-        canUpgrade = false;
         movement = player.GetComponent<PlayerMovement>();
+        //canUpgrade = false;
+        
+        gameObject.SetActive(true);
         
     }
 
@@ -67,9 +69,9 @@ public class AbilityRandomizer : MonoBehaviour
                 //call increase health method
             }
 
-            if (p0 == 3)
+            if (p0 == 4)
             {
-               //call bullet time method
+                powerups.AddSlowMotionUse();
             }
 
             canUpgrade = false;
@@ -99,9 +101,9 @@ public class AbilityRandomizer : MonoBehaviour
                 //call increase health method
             }
 
-            if (p1 == 3)
+            if (p1 == 4)
             {
-                //call bullet time method
+                powerups.AddSlowMotionUse();
             }
 
             canUpgrade = false;
@@ -131,9 +133,9 @@ public class AbilityRandomizer : MonoBehaviour
                 //call increase health method
             }
 
-            if (p2 == 3)
+            if (p2 == 4)
             {
-                //call bullet time method
+                powerups.AddSlowMotionUse();
             }
 
             canUpgrade = false;
@@ -144,7 +146,12 @@ public class AbilityRandomizer : MonoBehaviour
 
     public List<PowerUp> GetRandomPowerUps(int numChoices)
     {
-        
+
+        gameObject.SetActive(true);
+        canUpgrade = true;
+
+        movement = player.GetComponent<PlayerMovement>();
+
         List<PowerUp> allChoices = new List<PowerUp>
         {
             PowerUp.ReduceSize,
@@ -154,7 +161,7 @@ public class AbilityRandomizer : MonoBehaviour
             PowerUp.SlowMotion
         };
 
-        gameObject.SetActive(true);
+        
         movement.enabled = false;
 
         // Shuffle the list
@@ -285,7 +292,6 @@ public class AbilityRandomizer : MonoBehaviour
             }
 
             
-
 
             GameObject spawnedObject = Instantiate(objectsToSpawn[p], spawnPosition.position, Quaternion.identity, spawnPosition);
 

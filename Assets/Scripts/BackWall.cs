@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BackWall : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class BackWall : MonoBehaviour
     private Vector3 playerStartPosition;
 
     public int currentLevel;
+    public int maxLevel;
 
     void Start()
     {
@@ -26,6 +28,7 @@ public class BackWall : MonoBehaviour
         spawnerCeiling = ceiling.GetComponent<SpikeSpawner>();
 
         endToken = Token.GetComponent<EndToken>();
+        currentLevel = 1;
     }
 
     
@@ -42,6 +45,16 @@ public class BackWall : MonoBehaviour
     {
         currentLevel++;
 
+        if (currentLevel > maxLevel)
+        {
+            SceneManager.LoadScene("Win");
+        }
+
+        else
+        {
+            player.transform.position = playerStartPosition;
+        }
+
         if (currentLevel % 3 == 0)
         {
            
@@ -51,11 +64,11 @@ public class BackWall : MonoBehaviour
 
         else
         {
-            spawnerCeiling.numberOfSegments += 1;
-            spawnerGround.numberOfSegments += 1;
+            spawnerCeiling.numberOfSegments += 2;
+            spawnerGround.numberOfSegments += 2;
         }
 
-        player.transform.position = playerStartPosition;
+        
 
         spawnerGround.DestroyAllObstacles();
         spawnerCeiling.DestroyAllObstacles();
