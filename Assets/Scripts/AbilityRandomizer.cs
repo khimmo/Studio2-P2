@@ -17,8 +17,9 @@ public class AbilityRandomizer : MonoBehaviour
     private void Start()
     {
         powerups = player.GetComponent<PlayerPowerups>();
-        canUpgrade = false;
         movement = player.GetComponent<PlayerMovement>();
+        //canUpgrade = false;
+        
         gameObject.SetActive(true);
         
     }
@@ -147,6 +148,9 @@ public class AbilityRandomizer : MonoBehaviour
     {
 
         gameObject.SetActive(true);
+        canUpgrade = true;
+
+        movement = player.GetComponent<PlayerMovement>();
 
         List<PowerUp> allChoices = new List<PowerUp>
         {
