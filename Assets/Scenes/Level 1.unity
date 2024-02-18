@@ -6874,6 +6874,9 @@ MonoBehaviour:
   collisionCounter: 0
   normalMaterial: {fileID: 2100000, guid: 585aea08a226e7148a0da56549a24271, type: 2}
   ghostMaterial: {fileID: 2100000, guid: a638ead06ca255e489cec2c890732da1, type: 2}
+  slowMotionFactor: 2
+  slowMotionDuration: 5
+  slowMotionUses: 0
 --- !u!1 &2052986808
 GameObject:
   m_ObjectHideFlags: 0
