@@ -187,7 +187,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 544739484}
-  - {fileID: 421969496}
   - {fileID: 421967990}
   - {fileID: 410395868}
   - {fileID: 1776430331}
@@ -509,12 +508,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66860978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02a689a693d232a479295daf48225db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupUI: {fileID: 0}
+  powerupUI: {fileID: 1992514820}
   isTakeable: 0
 --- !u!1 &143781178
 GameObject:
@@ -3032,7 +3031,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.987973, g: 1, b: 0.78679246, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -4337,6 +4336,7 @@ GameObject:
   - component: {fileID: 1308201297}
   - component: {fileID: 1308201296}
   - component: {fileID: 1308201299}
+  - component: {fileID: 1308201300}
   m_Layer: 0
   m_Name: Back Wall
   m_TagString: Untagged
@@ -4447,6 +4447,20 @@ MonoBehaviour:
   ceiling: {fileID: 342338781}
   Token: {fileID: 454046352}
   currentLevel: 0
+--- !u!114 &1308201300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308201294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a689a693d232a479295daf48225db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupUI: {fileID: 1992514820}
+  isTakeable: 0
 --- !u!1 &1355063734
 GameObject:
   m_ObjectHideFlags: 0
