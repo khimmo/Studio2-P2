@@ -5063,6 +5063,8 @@ MonoBehaviour:
   - {fileID: 915163324}
   - {fileID: 1282749417}
   - {fileID: 2025437727}
+  player: {fileID: 2035402140}
+  canUpgrade: 0
 --- !u!114 &1992514823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,7 +5422,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4351357357622951525, guid: 173f0277175abbd4ba96fd2840964084, type: 3}
   shootPoint: {fileID: 736387639}
   projectileCount: 999
-  sizeReductionPercent: 75
+  sizeReductionPercent: 0.75
   ghostModeDuration: 2
   collisionCounter: 0
   normalMaterial: {fileID: 2100000, guid: 585aea08a226e7148a0da56549a24271, type: 2}

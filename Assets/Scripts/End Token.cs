@@ -37,6 +37,7 @@ public class EndToken : MonoBehaviour
 
             randomizer.GetRandomPowerUps(3);
             randomizer.SpawnThreeRandomObjectsOnCanvas();
+            randomizer.canUpgrade = true;
             isTakeable = false;
         }
             

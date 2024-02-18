@@ -36,7 +36,7 @@ public class SpikeSpawner : MonoBehaviour
                 float segmentStartZ = i * segmentLength;
                 float randomZ = Random.Range(segmentStartZ, segmentStartZ + segmentLength);
                 float randomX = Random.Range(-widthX / 2, widthX / 2);
-                float randomY = Random.Range(0, 3f);
+                float randomY = Random.Range(0, 2f);
 
                 if (transform.position.y > 4)
                 {

@@ -5,10 +5,19 @@ public class AbilityRandomizer : MonoBehaviour
 {
     public GameObject[] objectsToSpawn;
     public RectTransform[] spawnPositions;
+    public GameObject player;
 
     PlayerPowerups powerups;
 
     private int p, p0, p1, p2;
+
+    public bool canUpgrade;
+
+    private void Start()
+    {
+        powerups = player.GetComponent<PlayerPowerups>();
+        canUpgrade = false;
+    }
 
 
     public enum PowerUp
@@ -20,17 +29,111 @@ public class AbilityRandomizer : MonoBehaviour
         SlowMotion
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+        //if (other.CompareTag("Player"))
+        //{
+            //GetRandomPowerUps(3);
+            //Destroy(gameObject);
+            //powerups = other.GetComponent<PlayerPowerups>();
+        //}
+
+    //}
+
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && canUpgrade == true)
         {
-            GetRandomPowerUps(3);
-            Destroy(gameObject);
-            powerups = other.GetComponent<PlayerPowerups>();
+            if (p0 == 3)
+            {
+                powerups.ReducePlayerSize();
+            }
+
+            if (p0 == 2)
+            {
+                powerups.AddProjectiles(3);
+            }
+
+            if (p0 == 1)
+            {
+                powerups.AddGhostModeUse();
+            }
+
+            if (p0 == 0)
+            {
+                //call increase health method
+            }
+
+            if (p0 == 3)
+            {
+               //call bullet time method
+            }
+
+            canUpgrade = false;
+            gameObject.SetActive(false);
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha2) && canUpgrade == true)
+        {
+            if (p1 == 3)
+            {
+                powerups.ReducePlayerSize();
+            }
 
+            if (p1 == 2)
+            {
+                powerups.AddProjectiles(3);
+            }
 
+            if (p1 == 1)
+            {
+                powerups.AddGhostModeUse();
+            }
+
+            if (p1 == 0)
+            {
+                //call increase health method
+            }
+
+            if (p1 == 3)
+            {
+                //call bullet time method
+            }
+
+            canUpgrade = false;
+            gameObject.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && canUpgrade == true)
+        {
+            if (p2 == 3)
+            {
+                powerups.ReducePlayerSize();
+            }
+
+            if (p2 == 2)
+            {
+                powerups.AddProjectiles(3);
+            }
+
+            if (p2 == 1)
+            {
+                powerups.AddGhostModeUse();
+            }
+
+            if (p2 == 0)
+            {
+                //call increase health method
+            }
+
+            if (p2 == 3)
+            {
+                //call bullet time method
+            }
+
+            canUpgrade = false;
+            gameObject.SetActive(false);
+        }
     }
 
     public List<PowerUp> GetRandomPowerUps(int numChoices)
@@ -43,6 +146,8 @@ public class AbilityRandomizer : MonoBehaviour
             PowerUp.ExtraLife,
             PowerUp.SlowMotion
         };
+
+        gameObject.SetActive(true);
 
         // Shuffle the list
         int n = allChoices.Count;
