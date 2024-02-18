@@ -511,6 +511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a689a693d232a479295daf48225db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupUI: {fileID: 0}
+  isTakeable: 0
 --- !u!1 &143781178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1742,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421967989}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &454046352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2501261421576388771, guid: 44e602e3c9b6e4144b9253d92082e39f, type: 3}
+  m_PrefabInstance: {fileID: 900862406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &463097727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,6 +2857,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 66860979}
     m_Modifications:
+    - target: {fileID: -2061249614767368054, guid: 44e602e3c9b6e4144b9253d92082e39f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2061249614767368054, guid: 44e602e3c9b6e4144b9253d92082e39f, type: 3}
+      propertyPath: powerupUI
+      value: 
+      objectReference: {fileID: 1992514820}
     - target: {fileID: 167609950304558015, guid: 44e602e3c9b6e4144b9253d92082e39f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.14093637
@@ -3968,6 +3983,7 @@ MonoBehaviour:
   player: {fileID: 2035402140}
   ground: {fileID: 234093999}
   ceiling: {fileID: 342338781}
+  Token: {fileID: 454046352}
   currentLevel: 0
 --- !u!1 &1355063734
 GameObject:

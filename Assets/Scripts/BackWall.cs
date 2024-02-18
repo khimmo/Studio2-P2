@@ -7,9 +7,12 @@ public class BackWall : MonoBehaviour
     public GameObject player;
     public GameObject ground;
     public GameObject ceiling;
+    public GameObject Token;
 
     SpikeSpawner spawnerGround;
     SpikeSpawner spawnerCeiling;
+
+    EndToken endToken;
 
     private Vector3 playerStartPosition;
 
@@ -21,6 +24,8 @@ public class BackWall : MonoBehaviour
 
         spawnerGround = ground.GetComponent<SpikeSpawner>();
         spawnerCeiling = ceiling.GetComponent<SpikeSpawner>();
+
+        endToken = Token.GetComponent<EndToken>();
     }
 
     
@@ -29,6 +34,7 @@ public class BackWall : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             IncreaseLevel();
+            endToken.isTakeable = true;
         }
     }
 

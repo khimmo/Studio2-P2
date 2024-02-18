@@ -7,6 +7,16 @@ public class EndToken : MonoBehaviour
 {
 
     PlayerPowerups powerups;
+    public GameObject powerupUI;
+    AbilityRandomizer randomizer;
+
+    public bool isTakeable;
+
+    private void Start()
+    {
+        randomizer = powerupUI.GetComponent<AbilityRandomizer>();
+        isTakeable = true;
+    }
 
     public enum PowerUp
     {
@@ -19,11 +29,15 @@ public class EndToken : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isTakeable == true)
         {
             GetRandomPowerUps(3);
-            Destroy(gameObject);
+            //Destroy(gameObject);
             powerups = other.GetComponent<PlayerPowerups>();
+
+            randomizer.GetRandomPowerUps(3);
+            randomizer.SpawnThreeRandomObjectsOnCanvas();
+            isTakeable = false;
         }
             
 
