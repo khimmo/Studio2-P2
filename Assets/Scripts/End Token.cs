@@ -6,6 +6,8 @@ using UnityEngine;
 public class EndToken : MonoBehaviour
 {
 
+    PlayerPowerups powerups;
+
     public enum PowerUp
     {
         ReduceSize,
@@ -13,6 +15,19 @@ public class EndToken : MonoBehaviour
         GhostAbility,
         ExtraLife,
         SlowMotion
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GetRandomPowerUps(3);
+            Destroy(gameObject);
+            powerups = other.GetComponent<PlayerPowerups>();
+        }
+            
+
+        
     }
     public List<PowerUp> GetRandomPowerUps(int numChoices)
     {
@@ -50,19 +65,29 @@ public class EndToken : MonoBehaviour
         switch (selectedPowerUp)
         {
             case PowerUp.ReduceSize:
-                // Reduce player size by 25%
+
+                powerups.ReducePlayerSize();
+
                 break;
             case PowerUp.ShootProjectile:
-                // Grant projectile shooting ability
+
+                powerups.AddProjectiles(3);
+
                 break;
             case PowerUp.GhostAbility:
-                // Grant ghosting ability for 2 seconds
+
+                powerups.AddGhostModeUse();
+
                 break;
             case PowerUp.ExtraLife:
+
                 // Respawn the player back at the starting position without losing health
+
                 break;
             case PowerUp.SlowMotion:
+
                 // Give the player the ability to slow down time for 5s
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

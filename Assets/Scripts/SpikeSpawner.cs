@@ -7,8 +7,8 @@ public class SpikeSpawner : MonoBehaviour
 
     float lengthZ;
     float widthX;
-    public int numberOfSegments; // Amount of segments to divide level into
-    public int obstaclesPerSegment; // Obstacles to spawn per segment
+    public int numberOfSegments;
+    public int obstaclesPerSegment;
     public GameObject ground;
     private float xRotation;
     private List<GameObject> spawnedObstacles = new List<GameObject>();
@@ -21,7 +21,7 @@ public class SpikeSpawner : MonoBehaviour
 
     public void SpawnObstacles()
     {
-        // Destroy existing obstacles before spawning new ones
+        
         DestroyAllObstacles();
 
         lengthZ = ground.transform.localScale.z;
@@ -36,7 +36,7 @@ public class SpikeSpawner : MonoBehaviour
                 float segmentStartZ = i * segmentLength;
                 float randomZ = Random.Range(segmentStartZ, segmentStartZ + segmentLength);
                 float randomX = Random.Range(-widthX / 2, widthX / 2);
-                float randomY = Random.Range(0, 2f);
+                float randomY = Random.Range(0, 3f);
 
                 if (transform.position.y > 4)
                 {
@@ -51,20 +51,20 @@ public class SpikeSpawner : MonoBehaviour
                 Vector3 spawnPosition = new Vector3(randomX, transform.position.y + randomY, randomZ - lengthZ * 0.5f);
                 Quaternion spawnRotation = Quaternion.Euler(-xRotation, 0, 0);
 
-                // Instantiate the obstacle and add it to the list
+                
                 GameObject obstacleInstance = Instantiate(obstaclePrefab, spawnPosition, spawnRotation);
                 spawnedObstacles.Add(obstacleInstance);
             }
         }
     }
 
-    // Method to destroy all spawned obstacles
+    
     public void DestroyAllObstacles()
     {
         foreach (GameObject obstacle in spawnedObstacles)
         {
             Destroy(obstacle);
         }
-        spawnedObstacles.Clear(); // Clear the list after destroying the obstacles
+        spawnedObstacles.Clear();
     }
 }
