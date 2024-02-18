@@ -69,9 +69,9 @@ public class AbilityRandomizer : MonoBehaviour
                 //call increase health method
             }
 
-            if (p0 == 3)
+            if (p0 == 4)
             {
-               //call bullet time method
+                powerups.AddSlowMotionUse();
             }
 
             canUpgrade = false;
@@ -101,9 +101,9 @@ public class AbilityRandomizer : MonoBehaviour
                 //call increase health method
             }
 
-            if (p1 == 3)
+            if (p1 == 4)
             {
-                //call bullet time method
+                powerups.AddSlowMotionUse();
             }
 
             canUpgrade = false;
@@ -133,9 +133,9 @@ public class AbilityRandomizer : MonoBehaviour
                 //call increase health method
             }
 
-            if (p2 == 3)
+            if (p2 == 4)
             {
-                //call bullet time method
+                powerups.AddSlowMotionUse();
             }
 
             canUpgrade = false;

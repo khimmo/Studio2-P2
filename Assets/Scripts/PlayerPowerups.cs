@@ -19,6 +19,10 @@ public class PlayerPowerups : MonoBehaviour
     private Renderer playerRenderer;
     private int ghostModeUses = 0;
 
+    public float slowMotionFactor = 3f;
+    public float slowMotionDuration = 5f;
+    public int slowMotionUses = 0;
+
     void Start()
     {
         playerCollider = GetComponent<Collider>();
@@ -41,6 +45,11 @@ public class PlayerPowerups : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !isGhostModeActive && ghostModeUses > 0)
         {
             StartCoroutine(ActivateGhostMode());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q) && slowMotionUses > 0)
+        {
+            StartCoroutine(ActivateSlowMotion());
         }
     }
 
@@ -118,6 +127,19 @@ public class PlayerPowerups : MonoBehaviour
             playerRenderer.material = normalMaterial;
         }
         
+    }
+
+    IEnumerator ActivateSlowMotion()
+    {
+        slowMotionUses--; // Decrement uses
+        Time.timeScale = 1f / slowMotionFactor; // Slow down time
+        yield return new WaitForSecondsRealtime(slowMotionDuration); // Wait for the duration in real time
+        Time.timeScale = 1f; // Revert time scale to normal
+    }
+
+    public void AddSlowMotionUse()
+    {
+        slowMotionUses++;
     }
 
     private void OnTriggerEnter(Collider other)
