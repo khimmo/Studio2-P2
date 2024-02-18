@@ -11,6 +11,7 @@ public class EndToken : MonoBehaviour
     AbilityRandomizer randomizer;
 
     public bool isTakeable;
+    private int numberOfPowerups = 3;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class EndToken : MonoBehaviour
             //Destroy(gameObject);
             powerups = other.GetComponent<PlayerPowerups>();
 
-            randomizer.GetRandomPowerUps(3);
+            randomizer.GetRandomPowerUps(numberOfPowerups);
             randomizer.SpawnThreeRandomObjectsOnCanvas();
             randomizer.canUpgrade = true;
             isTakeable = false;

@@ -19,6 +19,7 @@ public class AbilityRandomizer : MonoBehaviour
         powerups = player.GetComponent<PlayerPowerups>();
         canUpgrade = false;
         movement = player.GetComponent<PlayerMovement>();
+        gameObject.SetActive(true);
         
     }
 
@@ -285,7 +286,6 @@ public class AbilityRandomizer : MonoBehaviour
             }
 
             
-
 
             GameObject spawnedObject = Instantiate(objectsToSpawn[p], spawnPosition.position, Quaternion.identity, spawnPosition);
 

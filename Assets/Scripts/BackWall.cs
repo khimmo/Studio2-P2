@@ -51,8 +51,8 @@ public class BackWall : MonoBehaviour
 
         else
         {
-            spawnerCeiling.numberOfSegments += 1;
-            spawnerGround.numberOfSegments += 1;
+            spawnerCeiling.numberOfSegments += 2;
+            spawnerGround.numberOfSegments += 2;
         }
 
         player.transform.position = playerStartPosition;

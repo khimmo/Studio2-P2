@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPowerups : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public Transform shootPoint;
+    public Transform shootPoint1, shootPoint2, shootPoint3;
     public int projectileCount = 0;
 
     public float sizeReductionPercent = 75f;
@@ -51,13 +51,25 @@ public class PlayerPowerups : MonoBehaviour
 
     void ShootProjectile()
     {
+        Quaternion spawnRotation = Quaternion.Euler(90, 0, 0);
+
         if (projectileCount <= 0) return;
 
         
-        GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        GameObject projectile1 = Instantiate(projectilePrefab, shootPoint1.position, spawnRotation);
+        Rigidbody rb1 = projectile1.GetComponent<Rigidbody>();
         
-        rb.velocity = transform.forward * 50f;
+        rb1.velocity = transform.forward * 50f;
+
+        GameObject projectile2 = Instantiate(projectilePrefab, shootPoint2.position, spawnRotation);
+        Rigidbody rb2 = projectile2.GetComponent<Rigidbody>();
+
+        rb2.velocity = transform.forward * 50f;
+
+        GameObject projectile3 = Instantiate(projectilePrefab, shootPoint3.position, spawnRotation);
+        Rigidbody rb3 = projectile3.GetComponent<Rigidbody>();
+
+        rb3.velocity = transform.forward * 50f;
 
         projectileCount--;
     }
