@@ -13,10 +13,14 @@ public class EndToken : MonoBehaviour
     public bool isTakeable;
     private int numberOfPowerups = 3;
 
+    public GameObject backWallObject;
+    BackWall backWall;
+
     private void Start()
     {
         randomizer = powerupUI.GetComponent<AbilityRandomizer>();
         isTakeable = true;
+        backWall = backWallObject.GetComponent<BackWall>();
     }
 
     public enum PowerUp
@@ -33,13 +37,19 @@ public class EndToken : MonoBehaviour
         if (other.CompareTag("Player") && isTakeable == true)
         {
             GetRandomPowerUps(3);
-            //Destroy(gameObject);
+            
             powerups = other.GetComponent<PlayerPowerups>();
 
             randomizer.GetRandomPowerUps(numberOfPowerups);
-            randomizer.SpawnThreeRandomObjectsOnCanvas();
             randomizer.canUpgrade = true;
+            randomizer.SpawnThreeRandomObjectsOnCanvas();
+            
             isTakeable = false;
+
+            if (backWall.currentLevel == (backWall.maxLevel - 1))
+            {
+                Destroy(gameObject);
+            }
         }
             
 

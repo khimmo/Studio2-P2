@@ -145,7 +145,9 @@ public class AbilityRandomizer : MonoBehaviour
 
     public List<PowerUp> GetRandomPowerUps(int numChoices)
     {
-        
+
+        gameObject.SetActive(true);
+
         List<PowerUp> allChoices = new List<PowerUp>
         {
             PowerUp.ReduceSize,
@@ -155,7 +157,7 @@ public class AbilityRandomizer : MonoBehaviour
             PowerUp.SlowMotion
         };
 
-        gameObject.SetActive(true);
+        
         movement.enabled = false;
 
         // Shuffle the list
