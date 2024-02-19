@@ -1,9 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerPowerups : MonoBehaviour
 {
+    [SerializeField] TMP_Text lasertext;
+    [SerializeField] GameObject laserUI;
     public GameObject projectilePrefab;
     public Transform shootPoint1, shootPoint2, shootPoint3;
     public int projectileCount = 0;
@@ -19,27 +21,40 @@ public class PlayerPowerups : MonoBehaviour
     private Renderer playerRenderer;
     private int ghostModeUses = 0;
 
+    [SerializeField] GameObject laserindictator;
+    [SerializeField] GameObject Invincibilityindicator;
+    [SerializeField] GameObject sizeindicator;
+    [SerializeField] GameObject timecontrolIndicator;
+
     public float slowMotionFactor = 3f;
     public float slowMotionDuration = 5f;
     public int slowMotionUses = 0;
 
     void Start()
     {
+        laserUI.SetActive(false);
+        laserindictator.SetActive(false);
+        Invincibilityindicator.SetActive(false);
+        sizeindicator.SetActive(false);
+        timecontrolIndicator.SetActive(false);
+
         playerCollider = GetComponent<Collider>();
         collisionCounter = 0;
 
         playerRenderer = GetComponent<Renderer>();
 
         projectileCount = 0;
-        
+
     }
 
     void Update()
     {
-        
+
         if (Input.GetMouseButtonDown(0) && projectileCount > 0)
         {
+
             ShootProjectile();
+            lasertext.text = projectileCount.ToString();
         }
 
         if (Input.GetKeyDown(KeyCode.E) && !isGhostModeActive && ghostModeUses > 0)
@@ -55,7 +70,10 @@ public class PlayerPowerups : MonoBehaviour
 
     public void AddProjectiles(int count)
     {
+        laserUI.SetActive(true);
+        laserindictator.SetActive(true);
         projectileCount += count;
+        lasertext.text = projectileCount.ToString();
     }
 
     void ShootProjectile()
@@ -64,10 +82,10 @@ public class PlayerPowerups : MonoBehaviour
 
         if (projectileCount <= 0) return;
 
-        
+
         GameObject projectile1 = Instantiate(projectilePrefab, shootPoint1.position, spawnRotation);
         Rigidbody rb1 = projectile1.GetComponent<Rigidbody>();
-        
+
         rb1.velocity = transform.forward * 50f;
 
         GameObject projectile2 = Instantiate(projectilePrefab, shootPoint2.position, spawnRotation);
@@ -83,7 +101,7 @@ public class PlayerPowerups : MonoBehaviour
         projectileCount--;
     }
 
-    
+
     public void AcquireShootingPowerUp()
     {
         AddProjectiles(3);
@@ -91,7 +109,7 @@ public class PlayerPowerups : MonoBehaviour
 
     public void ReducePlayerSize()
     {
-        
+        sizeindicator.SetActive(true);
         transform.localScale *= sizeReductionPercent;
     }
 
@@ -106,18 +124,18 @@ public class PlayerPowerups : MonoBehaviour
             playerRenderer.material = ghostMaterial;
         }
 
-        
+
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Obstacle"), true);
 
         yield return new WaitForSeconds(ghostModeDuration);
 
-        
+
         while (IsPlayerCollidingWithObstacle())
         {
             yield return null;
         }
 
-        
+
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Obstacle"), false);
 
         isGhostModeActive = false;
@@ -126,7 +144,7 @@ public class PlayerPowerups : MonoBehaviour
         {
             playerRenderer.material = normalMaterial;
         }
-        
+
     }
 
     IEnumerator ActivateSlowMotion()
@@ -139,6 +157,7 @@ public class PlayerPowerups : MonoBehaviour
 
     public void AddSlowMotionUse()
     {
+        timecontrolIndicator.SetActive(true);
         slowMotionUses++;
     }
 
@@ -168,6 +187,7 @@ public class PlayerPowerups : MonoBehaviour
 
     public void AddGhostModeUse()
     {
+        Invincibilityindicator.SetActive(true);
         ghostModeUses++;
     }
 }

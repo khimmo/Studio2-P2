@@ -19,9 +19,9 @@ public class AbilityRandomizer : MonoBehaviour
         powerups = player.GetComponent<PlayerPowerups>();
         movement = player.GetComponent<PlayerMovement>();
         //canUpgrade = false;
-        
+
         gameObject.SetActive(true);
-        
+
     }
 
 
@@ -36,12 +36,12 @@ public class AbilityRandomizer : MonoBehaviour
 
     //private void OnTriggerEnter(Collider other)
     //{
-        //if (other.CompareTag("Player"))
-        //{
-            //GetRandomPowerUps(3);
-            //Destroy(gameObject);
-            //powerups = other.GetComponent<PlayerPowerups>();
-        //}
+    //if (other.CompareTag("Player"))
+    //{
+    //GetRandomPowerUps(3);
+    //Destroy(gameObject);
+    //powerups = other.GetComponent<PlayerPowerups>();
+    //}
 
     //}
 
@@ -66,7 +66,7 @@ public class AbilityRandomizer : MonoBehaviour
 
             if (p0 == 0)
             {
-                //call increase health method
+                movement.HealthBoost();
             }
 
             if (p0 == 4)
@@ -98,7 +98,7 @@ public class AbilityRandomizer : MonoBehaviour
 
             if (p1 == 0)
             {
-                //call increase health method
+                movement.HealthBoost();
             }
 
             if (p1 == 4)
@@ -130,7 +130,7 @@ public class AbilityRandomizer : MonoBehaviour
 
             if (p2 == 0)
             {
-                //call increase health method
+                movement.HealthBoost();
             }
 
             if (p2 == 4)
@@ -161,7 +161,7 @@ public class AbilityRandomizer : MonoBehaviour
             PowerUp.SlowMotion
         };
 
-        
+
         movement.enabled = false;
 
         // Shuffle the list
@@ -258,13 +258,13 @@ public class AbilityRandomizer : MonoBehaviour
 
         return allChoices.GetRange(0, numChoices);
 
-        
+
 
         //Needs UI logic to display the 3 random choices to the player and allow them to choose one
         //Logic for player selection is in the ApplyPowerup() method
     }
 
-   
+
     public void SpawnThreeRandomObjectsOnCanvas()
     {
 
@@ -291,7 +291,7 @@ public class AbilityRandomizer : MonoBehaviour
                 p = p2;
             }
 
-            
+
 
             GameObject spawnedObject = Instantiate(objectsToSpawn[p], spawnPosition.position, Quaternion.identity, spawnPosition);
 

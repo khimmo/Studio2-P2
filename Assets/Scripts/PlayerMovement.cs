@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [SerializeField] private int fourthhealth = 120;
+    [SerializeField] private int extrahealth = 30;
     [SerializeField] private int maxhealth = 90;
     [SerializeField] private int thirdhealth = 60;
     [SerializeField] private int secondhealth = 30;
@@ -14,10 +17,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float z = 49.25f;
 
     [SerializeField] private int currenthealth = 0;
+    [SerializeField] private GameObject healthindicator;
 
     [SerializeField] private GameObject health1;
     [SerializeField] private GameObject health2;
     [SerializeField] private GameObject health3;
+    [SerializeField] private GameObject healthextra;
 
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float moveSpeed = 5f;
@@ -27,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        healthextra.SetActive(false);
+        healthindicator.SetActive(false);
         currenthealth = maxhealth;
         rb = GetComponent<Rigidbody>();
     }
@@ -46,10 +53,16 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-
+        if (currenthealth > fourthhealth)
+        {
+            currenthealth = fourthhealth;
+        }
     }
     private async void OnCollisionEnter(Collision collision)
     {
+
+
+
         if (collision.gameObject.CompareTag(Damage) && currenthealth == maxhealth)
         {
             health3.SetActive(false);
@@ -77,7 +90,24 @@ public class PlayerMovement : MonoBehaviour
         {
 
             SceneManager.LoadScene(3);
+
         }
 
+        else if (collision.gameObject.CompareTag(Damage) && currenthealth == fourthhealth)
+        {
+
+            healthextra.SetActive(false);
+            currenthealth = maxhealth;
+            transform.position = new Vector3(x, y, z);
+            await Task.Delay(2000);
+
+        }
+
+    }
+    public void HealthBoost()
+    {
+        healthindicator.SetActive(true);
+        currenthealth += extrahealth;
+        healthextra.SetActive(true);
     }
 }
